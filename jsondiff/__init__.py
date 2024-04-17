@@ -249,7 +249,10 @@ class ExplicitJsonDiffSyntax(object):
         elif s == 1.0 and not (inserted or changed or deleted):
             return {}
         else:
-            d = changed
+            # DAK: CHANGED 2024-04-05
+            d = {}
+            if changed:
+                d[update] = changed
             if inserted:
                 d[insert] = inserted
             if deleted:
@@ -296,7 +299,10 @@ class SymmetricJsonDiffSyntax(object):
         elif s == 1.0 and not (inserted or changed or deleted):
             return {}
         else:
-            d = changed
+            # DAK: Changed 2024-04-09
+            d = {}
+            if changed:
+                d[update] = changed
             if inserted:
                 d[insert] = inserted
             if deleted:
@@ -309,7 +315,10 @@ class SymmetricJsonDiffSyntax(object):
         elif s == 1.0 and not (added or changed or removed):
             return {}
         else:
-            d = changed
+            # DAK: Changed 2024-04-09
+            d = {}
+            if changed:
+                d[update] = changed
             if added:
                 d[insert] = added
             if removed:
